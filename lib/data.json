@@ -1,0 +1,15 @@
+{
+    "doctor_data_model": {
+        "doctordata": {
+          "id": 1,
+          "name": "Lý Lệ Thu",
+          "phoneNumber": "0911 222 333",
+          "email": "lylethu123@gmail.com",
+          "speciality": "Tư vấn tâm lý",
+          "year": "2008 - 2014",
+          "university": "Đại học Y Hà Nội",
+          "department": "Thần kinh",
+          "award": "Giải thưởng Alexandre Yersin\nGiải thưởng Phạm Ngọc Thạch"
+        }
+    }
+}
