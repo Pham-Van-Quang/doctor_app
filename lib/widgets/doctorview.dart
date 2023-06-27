@@ -1,3 +1,4 @@
+import 'package:doctor_app/router/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -25,53 +26,68 @@ class _DoctorViewState extends State<DoctorView> {
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
         itemCount: widget.customItemCount,
-        itemBuilder: (context, index) => Container(
-              width: double.infinity,
-              margin: const EdgeInsets.only(bottom: 12),
-              padding: const EdgeInsets.only(top: 10, left: 12, bottom: 12),
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(8),
-                  boxShadow: [
-                    BoxShadow(
-                      color: const Color(0xff004080).withOpacity(0.04),
-                      blurRadius: 20,
-                    )
-                  ]),
-              // child: Row(
-              //   children: [
-              //     Container(
-              //       margin: const EdgeInsets.only(right: 10),
-              //       child: CircleAvatar(
-              //         radius: 45,
-              //         backgroundImage:
-              //             NetworkImage(widget.doctorList[index].imageUrl ?? ""),
-              //       ),
-              //     ),
-              //     Column(
-              //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //       crossAxisAlignment: CrossAxisAlignment.start,
-              //       children: [
-              //         Text(
-              //           "Bác sĩ: ${widget.doctorList[index].name ?? ""}",
-              //           style: const TextStyle(
-              //               fontSize: 15, fontWeight: FontWeight.w700),
-              //         ),
-              //         Text(
-              //             "Chuyên khoa: ${widget.doctorList[index].speciality ?? ""}",
-              //             style: const TextStyle(
-              //                 fontSize: 15,
-              //                 fontWeight: FontWeight.normal,
-              //                 color: kTextColor)),
-              //         SizedBox(
-              //           height: 12,
-              //           width: 12,
-              //           child: SvgPicture.asset('assets/icons/star.svg'),
-              //         ),
-              //       ],
-              //     ),
-              //   ],
-              // ),
+        itemBuilder: (context, index) => GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(context, AppRouterName.doctorinfor,
+                    arguments: widget.doctorList[index]);
+              },
+              child: Container(
+                width: double.infinity,
+                margin: const EdgeInsets.only(bottom: 12),
+                padding: const EdgeInsets.only(top: 10, left: 14, bottom: 12),
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(8),
+                    boxShadow: [
+                      BoxShadow(
+                        color: const Color(0xff004080).withOpacity(0.04),
+                        blurRadius: 20,
+                      )
+                    ]),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    if (widget.doctorList.isNotEmpty)
+                      Container(
+                        margin: const EdgeInsets.only(right: 10),
+                        height: 90,
+                        width: 90,
+                        decoration: const BoxDecoration(shape: BoxShape.circle),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(75),
+                          child: Image.network(
+                            widget.doctorList[index].imageUrl ?? "",
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("Bác sĩ: ${widget.doctorList[index].name ?? ""}",
+                            style: Theme.of(context).textTheme.bodyMedium),
+                        const SizedBox(height: 13),
+                        Text(
+                            "Chuyên khoa: ${widget.doctorList[index].speciality ?? ""}",
+                            style: const TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.normal,
+                                color: kTextColor)),
+                        const SizedBox(height: 13),
+                        Row(
+                          children: [
+                            SvgPicture.asset('assets/icons/star.svg'),
+                            SvgPicture.asset('assets/icons/star.svg'),
+                            SvgPicture.asset('assets/icons/star.svg'),
+                            SvgPicture.asset('assets/icons/star.svg'),
+                            SvgPicture.asset('assets/icons/star.svg'),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
             ));
   }
 }

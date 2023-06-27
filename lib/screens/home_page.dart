@@ -1,13 +1,13 @@
 import 'dart:convert';
 
+import 'package:doctor_app/screens/authentication.dart';
 import 'package:doctor_app/components/constants.dart';
 import 'package:doctor_app/models/doctor_data.dart';
 import 'package:doctor_app/router/app_router.dart';
 import 'package:doctor_app/widgets/notification_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:http/http.dart' as http;
-
-import '../widgets/bottom_app_bar.dart';
 import '../widgets/doctorview.dart';
 
 class Homepage extends StatefulWidget {
@@ -61,12 +61,13 @@ class _HomepageState extends State<Homepage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const CircleAvatar(
-                    radius: 20,
-                    backgroundImage: AssetImage(
-                      'assets/images/avatar.jpg',
-                    ),
-                  ),
+                  Container(
+                      width: 50,
+                      height: 50,
+                      child: ClipRRect(
+                          borderRadius: BorderRadius.circular(25),
+                          child: Image.network(
+                              Auth().currentUser?.photoURL ?? ""))),
                   Container(
                     margin: const EdgeInsets.only(right: 110),
                     child: Column(
@@ -84,7 +85,8 @@ class _HomepageState extends State<Homepage> {
                       ],
                     ),
                   ),
-                  NotificationButton(),
+                  Animate(child: NotificationButton()).scale(
+                      curve: Curves.bounceInOut, delay: Duration(seconds: 1)),
                 ],
               ),
             ),
@@ -127,13 +129,13 @@ class _HomepageState extends State<Homepage> {
                         ],
                       ),
                       const SizedBox(height: 26),
-                      DoctorView(customItemCount: 3, doctorList: doctorList)
+                      if (doctorList.isNotEmpty)
+                        DoctorView(customItemCount: 3, doctorList: doctorList)
                     ],
                   ),
                 ),
               ),
             ),
-            const BottomBar(),
           ],
         ),
       ),

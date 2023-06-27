@@ -49,38 +49,45 @@ class _NumberOfDoctorsState extends State<NumberOfDoctors> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Padding(
-      padding: const EdgeInsets.only(right: 18, left: 18, top: 58),
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              BackButtonCustom(
-                onTap: () {
-                  Navigator.popUntil(
-                      context, ModalRoute.withName(AppRouterName.homepage));
-                },
+      body: SafeArea(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(
+                  right: 18, left: 18, top: 58, bottom: 24),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  BackButtonCustom(
+                    onTap: () {
+                      Navigator.popAndPushNamed(
+                        context,
+                        AppRouterName.homepage,
+                      );
+                    },
+                  ),
+                  Text(
+                    'Danh sách bác sĩ',
+                    style: Theme.of(context).textTheme.displayMedium,
+                  ),
+                  const SizedBox(
+                    height: 40,
+                    width: 40,
+                  )
+                ],
               ),
-              Text(
-                'Danh sách bác sĩ',
-                style: Theme.of(context).textTheme.displayMedium,
-              ),
-              const SizedBox(
-                height: 40,
-                width: 40,
-              )
-            ],
-          ),
-          const SizedBox(height: 24),
-          Expanded(
-            child: SingleChildScrollView(
+            ),
+            Expanded(
+              child: SingleChildScrollView(
+                  child: Padding(
+                padding: const EdgeInsets.fromLTRB(18, 0, 18, 0),
                 child: DoctorView(
-                    doctorList: doctorList,
-                    customItemCount: doctorList.length)),
-          )
-        ],
+                    doctorList: doctorList, customItemCount: doctorList.length),
+              )),
+            ),
+          ],
+        ),
       ),
-    ));
+    );
   }
 }

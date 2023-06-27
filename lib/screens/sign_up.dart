@@ -1,6 +1,6 @@
-// ignore_for_file: avoid_print, deprecated_member_use
+// ignore_for_file: avoid_print, deprecated_member_use, use_build_context_synchronously
 
-import 'package:doctor_app/authentication.dart';
+import 'package:doctor_app/screens/authentication.dart';
 import 'package:doctor_app/router/app_router.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -80,8 +80,6 @@ class _SignUpState extends State<SignUp> {
                     }),
                     obscureText: !isShowedPassWord,
                     hintText: 'Mật khẩu',
-                    child: SvgPicture.asset('assets/icons/lock.svg',
-                        color: isLockFocused ? kTextColor : null),
                     suffixIcon: InkWell(
                       onTap: () => setState(() {
                         isShowedPassWord = !isShowedPassWord;
@@ -98,6 +96,8 @@ class _SignUpState extends State<SignUp> {
                         ),
                       ),
                     ),
+                    child: SvgPicture.asset('assets/icons/lock.svg',
+                        color: isLockFocused ? kTextColor : null),
                   ),
                   const SizedBox(height: 16),
                   Row(
@@ -132,6 +132,8 @@ class _SignUpState extends State<SignUp> {
                         await Auth().signupWithEmailAndPassword(
                             email: emailAddress.text.trim(),
                             password: passWord.text.trim());
+                        Navigator.pushNamed(
+                            context, AppRouterName.successfulregistration);
                       },
                       child: Text("Đăng ký",
                           style: Theme.of(context).textTheme.displaySmall)),
@@ -143,28 +145,12 @@ class _SignUpState extends State<SignUp> {
                   const SizedBox(height: 35),
                   ThirdParty(),
                   const SizedBox(height: 64),
-                  RichText(
-                      textAlign: TextAlign.center,
-                      text: TextSpan(children: [
-                        const TextSpan(
-                            text: 'Bằng cách đăng ký, bạn đồng ý với\n',
-                            style: TextStyle(
-                                color: kTextColor,
-                                fontSize: 14,
-                                fontFamily: 'SVN-Avo')),
-                        TextSpan(
-                            recognizer: TapGestureRecognizer()
-                              ..onTap = () {
-                                Navigator.pushNamed(
-                                    context, AppRouterName.privacyandterm);
-                              },
-                            text: 'Điều khoản & Chính sách',
-                            style: const TextStyle(
-                                color: kPrimaryColor,
-                                fontSize: 14,
-                                fontFamily: 'SVN-Avo',
-                                decoration: TextDecoration.underline))
-                      ]))
+                  const Text(
+                    'Bằng cách đăng ký, bạn đồng ý với\n Điều khoản & Chính sách',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        color: kTextColor, fontSize: 14, fontFamily: 'SVN-Avo'),
+                  )
                 ],
               ),
             ),

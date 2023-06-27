@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:doctor_app/router/app_router.dart';
 import 'package:doctor_app/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -19,28 +21,29 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
         fontFamily: 'SVN-Avo',
         textTheme: const TextTheme(
-            displayLarge: TextStyle(
-                fontSize: 22,
-                fontFamily: 'SVN-Avo',
-                color: kTextColor,
-                fontWeight: FontWeight.w700),
-            displayMedium: TextStyle(
-                fontSize: 20,
-                fontFamily: 'SVN-Avo',
-                color: kTextColor,
-                fontWeight: FontWeight.w700),
-            displaySmall: TextStyle(
-                fontSize: 16,
-                fontFamily: 'SVN-Avo',
-                color: Colors.white,
-                fontWeight: FontWeight.w700),
-            bodySmall: TextStyle(
-                fontSize: 13, fontFamily: 'SVN-Avo', color: kTextColor),
-            bodyMedium: TextStyle(
-                fontSize: 16,
-                fontFamily: 'SVN-Avo',
-                fontWeight: FontWeight.w700,
-                color: kTextColor)),
+          displayLarge: TextStyle(
+              fontSize: 22,
+              fontFamily: 'SVN-Avo',
+              color: kTextColor,
+              fontWeight: FontWeight.w700),
+          displayMedium: TextStyle(
+              fontSize: 20,
+              fontFamily: 'SVN-Avo',
+              color: kTextColor,
+              fontWeight: FontWeight.w700),
+          displaySmall: TextStyle(
+              fontSize: 16,
+              fontFamily: 'SVN-Avo',
+              color: Colors.white,
+              fontWeight: FontWeight.w700),
+          bodySmall:
+              TextStyle(fontSize: 13, fontFamily: 'SVN-Avo', color: kTextColor),
+          bodyMedium: TextStyle(
+              fontSize: 16,
+              fontFamily: 'SVN-Avo',
+              fontWeight: FontWeight.w700,
+              color: kTextColor),
+        ),
       ),
       home: const SplashScreen(),
     );

@@ -1,8 +1,8 @@
+import 'package:doctor_app/screens/home.dart';
 import 'package:doctor_app/screens/onboarding.dart';
 import 'package:flutter/material.dart';
 
 import 'authentication.dart';
-import 'screens/home_page.dart';
 
 class WidgetTree extends StatelessWidget {
   const WidgetTree({super.key});
@@ -12,7 +12,7 @@ class WidgetTree extends StatelessWidget {
     return StreamBuilder(
       builder: (context, snapshotData) {
         if (snapshotData.hasData) {
-          return const Homepage();
+          return const Home();
         } else {
           return const Onboarding();
         }

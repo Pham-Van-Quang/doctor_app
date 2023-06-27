@@ -14,6 +14,11 @@ class Auth {
         email: email, password: password);
   }
 
+  updateUserPhoto(String photoUrl) async {
+    print(photoUrl);
+    await _firebaseAuth.currentUser?.updatePhotoURL(photoUrl);
+  }
+
   signupWithEmailAndPassword({
     required String email,
     required String password,

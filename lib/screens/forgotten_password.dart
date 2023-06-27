@@ -1,8 +1,9 @@
-// ignore_for_file: deprecated_member_use
+// ignore_for_file: deprecated_member_use, use_build_context_synchronously
 
 import 'package:doctor_app/components/constants.dart';
 import 'package:doctor_app/router/app_router.dart';
 import 'package:doctor_app/widgets/custom_button.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -20,6 +21,36 @@ class _ForgottenPasswordState extends State<ForgottenPassword> {
   TextEditingController emailAddress = TextEditingController();
   String? emailAddressValue;
   bool isEmailFocused = false;
+
+  @override
+  void dispose() {
+    emailAddress.dispose();
+    super.dispose();
+  }
+
+  Future passwordReset() async {
+    try {
+      await FirebaseAuth.instance
+          .sendPasswordResetEmail(email: emailAddress.text.trim());
+      showDialog(
+          context: context,
+          builder: (context) {
+            return const AlertDialog(
+              content: Text(
+                  'Đường dẫn đặt lại mật khẩu đã được gửi. Kiểm tra email!'),
+            );
+          });
+    } on FirebaseAuthException catch (e) {
+      print(e);
+      showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              content: Text(e.message.toString()),
+            );
+          });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,8 +87,8 @@ class _ForgottenPasswordState extends State<ForgottenPassword> {
             ),
             const SizedBox(height: 26),
             CustomButton(
-                onPressed: () {},
-                child: Text('Gửi',
+                onPressed: passwordReset,
+                child: Text('Đặt lại mật khẩu',
                     style: Theme.of(context).textTheme.displaySmall))
           ],
         ),

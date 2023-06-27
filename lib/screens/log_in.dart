@@ -1,6 +1,6 @@
 // ignore_for_file: avoid_print, deprecated_member_use, use_build_context_synchronously
 
-import 'package:doctor_app/authentication.dart';
+import 'package:doctor_app/screens/authentication.dart';
 import 'package:doctor_app/router/app_router.dart';
 import 'package:doctor_app/widgets/text_field.dart';
 import 'package:flutter/gestures.dart';
@@ -125,7 +125,7 @@ class _LoginState extends State<Login> {
                         await Auth().loginWithEmailAndPassword(
                             email: emailAddress.text.trim(),
                             password: passWord.text.trim());
-                        Navigator.pushNamed(context, '/homepage');
+                        Navigator.pushNamed(context, AppRouterName.homepage);
                       } catch (e) {
                         showDialog(
                             context: context,

@@ -1,20 +1,27 @@
+import 'package:doctor_app/models/doctor_data.dart';
+import 'package:doctor_app/screens/acount/account.dart';
+import 'package:doctor_app/screens/conversation.dart';
+import 'package:doctor_app/screens/doctor_infor.dart';
+import 'package:doctor_app/screens/home.dart';
 import 'package:doctor_app/screens/message_list.dart';
 import 'package:doctor_app/screens/number_of_doctors.dart';
+import 'package:doctor_app/screens/personal_infor.dart';
+import 'package:doctor_app/screens/personal_infor_update.dart';
+import 'package:doctor_app/screens/successful_registration.dart';
 import 'package:flutter/material.dart';
 
 import '../screens/change_password.dart';
 import '../screens/forgotten_password.dart';
-import '../screens/home_page.dart';
 import '../screens/log_in.dart';
 import '../screens/onboarding.dart';
 import '../screens/password_recovery.dart';
 import '../screens/privacy_and_term.dart';
 import '../screens/sign_up.dart';
 import '../screens/splash_screen.dart';
-import '../widget_tree.dart';
+import '../screens/widget_tree.dart';
 
 class AppRouter {
-  static Route<dynamic>? onGeneratedRoute(settings) {
+  static Route<dynamic>? onGeneratedRoute(RouteSettings settings) {
     switch (settings.name) {
       case AppRouterName.splashscreen:
         return MaterialPageRoute(
@@ -65,7 +72,7 @@ class AppRouter {
         );
       case AppRouterName.homepage:
         return MaterialPageRoute(
-          builder: (context) => const Homepage(),
+          builder: (context) => const Home(),
           settings: settings,
         );
       case AppRouterName.numberofdoctors:
@@ -76,6 +83,38 @@ class AppRouter {
       case AppRouterName.messagelist:
         return MaterialPageRoute(
           builder: (context) => const MessageList(),
+          settings: settings,
+        );
+      case AppRouterName.account:
+        return MaterialPageRoute(
+          builder: (context) => const Account(),
+          settings: settings,
+        );
+      case AppRouterName.personalinfor:
+        return MaterialPageRoute(
+          builder: (context) => const PersonalInfor(),
+          settings: settings,
+        );
+      case AppRouterName.personalinforupdate:
+        return MaterialPageRoute(
+          builder: (context) => const PersonalInforUpdate(),
+          settings: settings,
+        );
+      case AppRouterName.doctorinfor:
+        return MaterialPageRoute(
+          builder: (context) => DoctorInformation(
+            doctorData: settings.arguments as DoctorData,
+          ),
+          settings: settings,
+        );
+      case AppRouterName.conversation:
+        return MaterialPageRoute(
+          builder: (context) => const Conversation(),
+          settings: settings,
+        );
+      case AppRouterName.successfulregistration:
+        return MaterialPageRoute(
+          builder: (context) => const SuccessfulRegistration(),
           settings: settings,
         );
     }
@@ -96,4 +135,10 @@ class AppRouterName {
   static const homepage = "/homepage";
   static const numberofdoctors = "/number_of_doctors";
   static const messagelist = "/message_list";
+  static const account = "/account";
+  static const personalinfor = "/personalinfor";
+  static const personalinforupdate = "/personalinforupdate";
+  static const doctorinfor = "/doctorinfor";
+  static const conversation = "/conversation";
+  static const successfulregistration = "/successful_registration";
 }
