@@ -1,24 +1,25 @@
-import 'package:doctor_app/models/doctor_data.dart';
-import 'package:doctor_app/screens/acount/account.dart';
-import 'package:doctor_app/screens/conversation.dart';
-import 'package:doctor_app/screens/doctor_infor.dart';
-import 'package:doctor_app/screens/home.dart';
-import 'package:doctor_app/screens/message_list.dart';
-import 'package:doctor_app/screens/number_of_doctors.dart';
-import 'package:doctor_app/screens/personal_infor.dart';
-import 'package:doctor_app/screens/personal_infor_update.dart';
-import 'package:doctor_app/screens/successful_registration.dart';
+import 'package:doctor_app/network/remote/models/doctor_data.dart';
+import 'package:doctor_app/view/account/account.dart';
+import 'package:doctor_app/view/appointment.dart';
+import 'package:doctor_app/view/conversation.dart';
+import 'package:doctor_app/view/doctor_infor.dart';
+import 'package:doctor_app/view/home.dart';
+import 'package:doctor_app/view/consultation.dart';
+import 'package:doctor_app/view/number_of_doctors.dart';
+import 'package:doctor_app/view/personal_infor.dart';
+import 'package:doctor_app/view/personal_infor_update.dart';
+import 'package:doctor_app/view/successful_appointment.dart';
+import 'package:doctor_app/view/successful_registration.dart';
 import 'package:flutter/material.dart';
-
-import '../screens/change_password.dart';
-import '../screens/forgotten_password.dart';
-import '../screens/log_in.dart';
-import '../screens/onboarding.dart';
-import '../screens/password_recovery.dart';
-import '../screens/privacy_and_term.dart';
-import '../screens/sign_up.dart';
-import '../screens/splash_screen.dart';
-import '../screens/widget_tree.dart';
+import '../view/change_password.dart';
+import '../view/forgotten_password.dart';
+import '../view/log_in.dart';
+import '../view/onboarding.dart';
+import '../view/password_recovery.dart';
+import '../view/privacy_and_term.dart';
+import '../view/sign_up.dart';
+import '../view/splash_screen/view/splash_screen.dart';
+import '../view/widget_tree.dart';
 
 class AppRouter {
   static Route<dynamic>? onGeneratedRoute(RouteSettings settings) {
@@ -82,7 +83,7 @@ class AppRouter {
         );
       case AppRouterName.messagelist:
         return MaterialPageRoute(
-          builder: (context) => const MessageList(),
+          builder: (context) => const Consultation(),
           settings: settings,
         );
       case AppRouterName.account:
@@ -117,6 +118,18 @@ class AppRouter {
           builder: (context) => const SuccessfulRegistration(),
           settings: settings,
         );
+      case AppRouterName.appointment:
+        return MaterialPageRoute(
+          builder: (context) => Appointment(
+            doctorData: settings.arguments as DoctorData,
+          ),
+          settings: settings,
+        );
+      case AppRouterName.successfulappointment:
+        return MaterialPageRoute(
+          builder: (context) => const SuccessfulAppointment(),
+          settings: settings,
+        );
     }
     return null;
   }
@@ -141,4 +154,6 @@ class AppRouterName {
   static const doctorinfor = "/doctorinfor";
   static const conversation = "/conversation";
   static const successfulregistration = "/successful_registration";
+  static const appointment = "/appointment";
+  static const successfulappointment = "/successfulappointment";
 }

@@ -1,7 +1,7 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:doctor_app/router/app_router.dart';
-import 'package:doctor_app/screens/splash_screen.dart';
+import 'package:doctor_app/view/splash_screen/view/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'components/constants.dart';
