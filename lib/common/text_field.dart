@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../components/constants.dart';
 
 class TextFieldCustom extends SizedBox {
@@ -13,7 +14,7 @@ class TextFieldCustom extends SizedBox {
       hintText,
       suffixIcon})
       : super(
-          height: 50,
+          height: 50.h,
           width: double.infinity,
           child: TextField(
             controller: controller,
@@ -23,22 +24,20 @@ class TextFieldCustom extends SizedBox {
             onChanged: onChanged,
             decoration: InputDecoration(
                 hintText: hintText,
-                hintStyle:
-                    const TextStyle(fontSize: 14, color: kTextColorButton),
-                contentPadding: const EdgeInsets.symmetric(vertical: 15),
+                hintStyle: TextStyle(fontSize: 14.sp, color: kTextColorButton),
+                contentPadding: EdgeInsets.symmetric(vertical: 15.w),
                 prefixIcon: SizedBox(
-                  width: 22,
+                  width: 22.w,
                   child: Center(child: child),
                 ),
                 suffixIcon: suffixIcon,
                 enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
                     borderSide:
-                        const BorderSide(width: 1, color: kTextColorButton)),
+                        BorderSide(width: 1.w, color: kTextColorButton)),
                 focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
-                    borderSide:
-                        const BorderSide(width: 1, color: kPrimaryColor))),
+                    borderSide: BorderSide(width: 1.w, color: kPrimaryColor))),
           ),
         );
 }

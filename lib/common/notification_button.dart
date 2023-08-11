@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 class NotificationButton extends GestureDetector {
@@ -6,8 +7,8 @@ class NotificationButton extends GestureDetector {
       : super(
           onTap: onTap,
           child: Container(
-            height: 40,
-            width: 40,
+            height: 40.h,
+            width: 40.h,
             decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(8),
@@ -18,7 +19,7 @@ class NotificationButton extends GestureDetector {
                   )
                 ]),
             child: SizedBox(
-                width: 24,
+                width: 24.w,
                 child: Center(
                     child: SvgPicture.asset('assets/icons/notification.svg'))),
           ),

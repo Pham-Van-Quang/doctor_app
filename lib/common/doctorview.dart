@@ -1,5 +1,6 @@
 import 'package:doctor_app/router/app_router.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../components/constants.dart';
@@ -33,8 +34,8 @@ class _DoctorViewState extends State<DoctorView> {
               },
               child: Container(
                 width: double.infinity,
-                margin: const EdgeInsets.only(bottom: 12),
-                padding: const EdgeInsets.only(top: 10, left: 14, bottom: 12),
+                margin: EdgeInsets.only(bottom: 12.h),
+                padding: EdgeInsets.only(top: 10.h, left: 14.w, bottom: 12.h),
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(8),
@@ -49,9 +50,9 @@ class _DoctorViewState extends State<DoctorView> {
                   children: [
                     if (widget.doctorList.isNotEmpty)
                       Container(
-                        margin: const EdgeInsets.only(right: 10),
-                        height: 90,
-                        width: 90,
+                        margin: EdgeInsets.only(right: 20.w),
+                        height: 90.h,
+                        width: 90.h,
                         decoration: const BoxDecoration(shape: BoxShape.circle),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(75),
@@ -66,14 +67,14 @@ class _DoctorViewState extends State<DoctorView> {
                       children: [
                         Text("Bác sĩ: ${widget.doctorList[index].name ?? ""}",
                             style: Theme.of(context).textTheme.bodyMedium),
-                        const SizedBox(height: 13),
+                        SizedBox(height: 13.h),
                         Text(
                             "Chuyên khoa: ${widget.doctorList[index].speciality ?? ""}",
-                            style: const TextStyle(
-                                fontSize: 14,
+                            style: TextStyle(
+                                fontSize: 14.sp,
                                 fontWeight: FontWeight.normal,
                                 color: kTextColor)),
-                        const SizedBox(height: 13),
+                        SizedBox(height: 13.h),
                         Row(
                           children: [
                             SvgPicture.asset('assets/icons/star.svg'),

@@ -5,20 +5,11 @@ class ThirdParty extends Row {
       : super(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // IconButton(
-            //     onPressed: onPressed,
-            //     icon: Image.asset(
-            //       'assets/images/facebook.png',
-            //     )),
-            // const SizedBox(width: 102),
-            // IconButton(
-            //     onPressed: onPressed,
-            //     icon: Image.asset(
-            //       'assets/images/google.png',
-            //     )
-            //   ),
-            GestureDetector(
-                onTap: onTap, child: Image.asset('assets/images/facebook.png')),
+            IconButton(
+                onPressed: onPressed,
+                icon: Image.asset(
+                  'assets/images/facebook.png',
+                )),
             const SizedBox(width: 102),
             IconButton(
                 onPressed: onPressed,

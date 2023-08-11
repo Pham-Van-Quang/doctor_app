@@ -1,8 +1,8 @@
 import 'package:doctor_app/view/home.dart';
-import 'package:doctor_app/view/onboarding.dart';
+import 'package:doctor_app/view/onboarding/onboarding.dart';
 import 'package:flutter/material.dart';
 
-import 'authentication.dart';
+import '../authentication.dart';
 
 class WidgetTree extends StatelessWidget {
   const WidgetTree({super.key});
